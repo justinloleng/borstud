@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Records</title>
+  </head>
+  <body>
+    <h1>Student List</h1>
+    <a href="/add">Add Student</a>
+    <br /><br />
+
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Actions</th>
+      </tr>
+
+      <% if (students.length === 0) { %>
+      <tr>
+        <td colspan="5" style="text-align: center">No students found</td>
+      </tr>
+      <% } %> <% students.forEach(student => { %>
+      <tr>
+        <td><%= student.id %></td>
+        <td><%= student.name %></td>
+        <td><%= student.age %></td>
+        <td><%= student.course %></td>
+        <td>
+          <a href="/edit/<%= student.id %>">Edit</a> |
+          <form
+            action="/delete/<%= student.id %>"
+            method="POST"
+            style="display: inline"
+          >
+            <button
+              type="submit"
+              onclick="return confirm('Delete this student?')"
+            >
+              Delete
+            </button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
