@@ -1,7 +1,7 @@
 let students = [
   { id: 1, name: "Alice", age: 20, course: "BSIT" },
   { id: 2, name: "Bob", age: 21, course: "BSCS" },
-];
+]; //list of students
 
 class studentModel {
   static findAll() {
